@@ -1,0 +1,69 @@
+/**
+* Displays a formatted value
+*
+* @param unique id for this widget
+* @param a gad/item
+* @param a name of a format function
+* @param a unit, tries to get the format for that unit from the language-file (optional)
+* @param the parent html-tag for the value (optional, default 'span')
+*/
+{% macro format(id, gad, format, unit, tag) %}
+
+	<{{ tag|default('span') }} id="{{ uid(page, id) }}" data-widget="visu.format" data-item="{{ gad }}"
+    data-unit="{{ unit }}" data-format="{{ format }}">-.- {{ unit }}</{{ tag|default('span') }}>
+
+{% endmacro %}
+
+/**
+ * display a value
+ *
+ * @param       unique id for this widget
+ * @param       a gad/item
+ * @param       a unit (optional)
+ * @param       the parent html-tag for the value (optional, default 'span')
+ */
+{% macro percent(id, gad, tag) %}
+
+   <{{ tag|default('span') }} id="{{ uid(page, id) }}" data-widget="visu.percent" data-item="{{ gad }}"
+                data-unit="%">--- %</{{ tag|default('span') }}>
+
+{% endmacro %}
+
+{% macro lbutton(id, gad_short, gad_long, pic, val) %} 
+    <span id="{{ uid(page, id) }}" data-widget="visu.button" data-item="{{ gad_short }},{{ gad_long }}"
+                data-val="{{ val|default('1') }}"
+                class="switch"><a><img class="icon" src="{{ pic }}"/></a>
+    </span> 
+{% endmacro %} 
+
+{% macro shifter(id, gad_value, pic, min, max) %}
+
+    <span id="{{ uid(page, id) }}" data-widget="visu.shifter" data-item="{{ gad_value }}"
+                data-pic="{{ pic|default(icon0~'light_light_dim_00.png') }}"
+        data-min="{{ min|default('0') }}" data-max="{{ max|default('255') }}" class="switch">
+        <img class="icon" src="{{ pic|default(icon0~'light_light_dim_00.png') }}"/>
+    </span>
+
+{% endmacro %}
+
+
+{% macro map(id, gad_value, map_min, map_max, map_str) %}
+
+    <span id="{{ uid(page, id) }}" data-widget="visu.map" data-item="{{ gad_value }}"
+        data-map-str="{{ implode(map_str) }}" 
+        data-map-min="{{ implode(map_min) }}" 
+        data-map-max="{{ implode(map_max) }}">
+    </span>
+
+{% endmacro %}
+
+{% macro uzsu_icon(id, type, gad_uzsu, min, max, pic_on, pic_off) %}
+
+	<span id="{{ uid(page, id) }}" data-widget="visu.uzsu_icon" data-item="{{ gad_uzsu }}" data-type="{{ type }}"
+        data-min="{{ min|default('0') }}" data-max="{{ max|default('255') }}"
+		data-pic-on="{{ pic_on|default(icon1~'time_clock.png') }}" data-pic-off="{{ pic_off|default(icon0~'time_clock.png') }}"
+        class="switch"><a><img class="icon" src="{{ pic_off|default(icon0~'time_clock.png') }}" /></a>
+    </span>
+
+{% endmacro %}
+

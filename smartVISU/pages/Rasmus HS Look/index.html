@@ -1,0 +1,34 @@
+/**
+ * -----------------------------------------------------------------------------
+ * @package     smartVISU
+ * @author      Martin Gleiß
+ * @copyright   2012
+ * @license     GPL <http://www.gnu.de>
+ * ----------------------------------------------------------------------------- 
+ */
+ 
+
+{% extends "base.html" %}
+
+{% block header %}
+    {{ lib.smartvisu }}
+    <div class="mini"><span class="miniclock">{{ now|date('H:i') }}</span>, {{ now|date('d.m,') }} v{{ config_version }}</div>
+{% endblock %}
+
+{% block quad_top %}
+<div style="padding: 20px">
+    {% import "lib.html" as lib %}
+    {{ lib.updatecheck() }}
+    
+    {% import "weather.html" as weather %}
+    {{ weather.current('weather') }}    
+    <hr/>
+    {{ weather.forecastweek('weather_forecast') }}
+    <hr/>
+</div>
+{% endblock %}
+
+{% block content %}
+    {% include 'navigation.html' %}
+{% endblock %}
+

@@ -1,0 +1,38 @@
+/**
+ * -----------------------------------------------------------------------------
+ * @package     smartVISU
+ * @author      Niko Will
+ * @copyright   2013
+ * @license     GPL <http://www.gnu.de>
+ * -----------------------------------------------------------------------------
+ */
+
+
+{% extends "rooms.html" %}
+
+{% block title %}
+Ankleide
+{% endblock %}
+
+{% block header %}
+<img class="icon" src='{{ icon0 }}scene_dressing_room.png'/>
+{% endblock %}
+
+{% block content %}
+{% import "widget_list.html" as list %}
+<ul data-role="listview" data-dividertheme="c" class="nw_list">
+    {{ list.dimmer('dg.ankleide.licht', 'Deckenspots', 'dg.ankleide.licht', 'dg.ankleide.licht.wert') }}
+    {{ list.blind('dg.ankleide.rollladen', 'Rollladen', 'dg.ankleide.rollladen.lang', 'dg.ankleide.rollladen.kurz', 'dg.ankleide.rollladen.position') }}
+    {{ list.rtr('dg.ankleide.heizung', 'Heizung', 'dg.ankleide.heizung.ist', 'dg.ankleide.heizung.stellwert', 'dg.ankleide.heizung.soll', 'dg.ankleide.heizung.sollwertverschiebung', 'dg.ankleide.heizung.komfort', 'dg.ankleide.heizung.nacht', 'dg.ankleide.heizung.frostschutz', 'dg.ankleide.heizung.heizen') }}
+</ul>
+{% endblock %}
+
+
+{% block quad_top %}
+{{ plot.period('plot.dg.ankleide.heizung.ist', 'dg.ankleide.heizung.ist', 'avg', '1w', 0, 15, 25, '', 'Ist', '', '', '', '1h') }}
+{% endblock %}
+
+{% block quad_bottom %}
+{{ plot.period('plot.dg.ankleide.heizung.stellwert', 'dg.ankleide.heizung.stellwert', 'avg', '1w', 0, 0, 100, '', 'Stellwert', '', '', '', '1h') }}
+{% endblock %}
+

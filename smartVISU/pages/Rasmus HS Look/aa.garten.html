@@ -1,0 +1,30 @@
+/**
+ * -----------------------------------------------------------------------------
+ * @package     smartVISU
+ * @author      Niko Will
+ * @copyright   2013
+ * @license     GPL <http://www.gnu.de>
+ * -----------------------------------------------------------------------------
+ */
+
+
+{% extends "base.html" %}
+
+{% block title %}
+Garten
+{% endblock %}
+
+{% block header %}
+<img class="icon" src='{{ icon0 }}scene_garden.png'/>
+{% endblock %}
+
+{% block content %}
+{% import "widget_list.html" as list %}
+<ul data-role="listview" data-dividertheme="c" class="nw_list">
+    {{ list.dimmer('aa.terrasse.licht', 'Wandlampen', 'aa.terrasse.licht', 'aa.terrasse.licht.wert') }}
+    {{ list.dimmer('aa.terrasse.kugel.gross', 'Kugel groß', 'aa.terrasse.kugel.gross', 'aa.terrasse.kugel.gross.wert') }}
+    {{ list.dimmer('aa.terrasse.kugel.mittel', 'Kugel mittel', 'aa.terrasse.kugel.mittel', 'aa.terrasse.kugel.mittel.wert') }}
+    {{ list.dimmer('aa.terrasse.kugel.klein', 'Kugel klein', 'aa.terrasse.kugel.klein', 'aa.terrasse.kugel.klein.wert') }}
+</ul>
+{% endblock %}
+
